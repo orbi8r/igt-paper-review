@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Part 4</title>
+<style>
+:root{--bg:#000;--w:#fff;--y:#FFE600;--b:#3DA5FF;--dim:#bdbdbd}
+html,body{margin:0;background:var(--bg);overflow:hidden;width:1920px;height:1080px}
+canvas{position:absolute;left:0;top:0}
+#ov{position:absolute;left:0;top:0;width:1920px;height:1080px;font-family:'Noto Sans',sans-serif;font-weight:700;color:var(--w);pointer-events:none}
+.lab{position:absolute;white-space:nowrap;transform:translate(-50%,-50%);font-size:44px;text-shadow:0 0 6px #000,0 0 6px #000,0 0 3px #000}
+.tok{position:absolute;white-space:nowrap;transform:translate(-50%,-50%);font-size:72px;line-height:1}
+.tok sub{font-size:0.6em;vertical-align:-0.25em}
+.tok sup,.meas sup{font-size:0.6em;vertical-align:0.55em}
+.fadeb{position:absolute;left:0;top:0;width:1920px;height:1080px;background:#000}
+.meas{position:absolute;left:0;top:-500px;white-space:nowrap;font-size:72px;line-height:1;visibility:hidden}
+.meas span{display:inline-block}
+.meas sub{font-size:0.6em;vertical-align:-0.25em}
+.cap{position:absolute;white-space:nowrap;transform:translate(-50%,0);font-size:40px;color:var(--dim)}
+.bub{position:absolute;box-sizing:border-box;border:5px solid var(--w);border-radius:28px;background:#000;transform:translate(-50%,-50%)}
+.btxt{position:absolute;white-space:nowrap;transform:translate(-50%,-50%);font-size:52px}
+.btag{position:absolute;font-size:36px;transform:translate(0,-50%)}
+.card{position:absolute;transform:translate(-50%,-50%);background:var(--b);color:#000;border-radius:14px;font-size:46px;padding:10px 28px;white-space:nowrap}
+.hud{position:absolute;transform:translate(-50%,0);text-align:center}
+.hud .k{font-size:40px;color:var(--dim)}
+.hud .v{font-size:84px;line-height:1.05}
+.bar{position:absolute;height:34px;border:5px solid var(--w);box-sizing:border-box}
+.fill{position:absolute;height:34px;background:var(--w)}
+.box{position:absolute;border:5px solid var(--w);border-radius:12px;box-sizing:border-box}
+</style>
+<script type="importmap">{"imports":{"three":"./lib/three/build/three.module.js","three/addons/":"./lib/three/examples/jsm/"}}</script>
+</head><body><div id="ov"></div><script type="module" src="part4.js"></script></body></html>

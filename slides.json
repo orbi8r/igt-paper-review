@@ -1,0 +1,1468 @@
+{
+ "generated": "2026-10-29T11:32:16.369Z",
+ "slides": [
+  {
+   "n": 1,
+   "section": "A",
+   "title": "One ad slot",
+   "ov": [],
+   "steps": [
+    {
+     "cue": "Sam is tired of work. Bot can show one ad. Ads and Sam are points in aspect space.",
+     "spans": [
+      {
+       "part": 1,
+       "page": "index.html",
+       "start": 1,
+       "end": 41.122
+      }
+     ],
+     "from": {
+      "part": 1,
+      "page": "index.html",
+      "t": 1
+     },
+     "to": {
+      "part": 1,
+      "page": "index.html",
+      "t": 41.122
+     }
+    },
+    {
+     "cue": "Fit = how far an ad reaches along Sam’s arrow.",
+     "spans": [
+      {
+       "part": 1,
+       "page": "index.html",
+       "start": 41.122,
+       "end": 70.618
+      }
+     ],
+     "from": {
+      "part": 1,
+      "page": "index.html",
+      "t": 41.122
+     },
+     "to": {
+      "part": 1,
+      "page": "index.html",
+      "t": 70.618
+     }
+    },
+    {
+     "cue": "Fit is a dot product a·μ. Best fit h(μ) = top ad, or 0 for no ad.",
+     "spans": [
+      {
+       "part": 1,
+       "page": "index.html",
+       "start": 70.618,
+       "end": 82.49
+      }
+     ],
+     "from": {
+      "part": 1,
+      "page": "index.html",
+      "t": 70.618
+     },
+     "to": {
+      "part": 1,
+      "page": "index.html",
+      "t": 82.49
+     }
+    },
+    {
+     "cue": "Bid v pushes an ad further out. Here all bid the same.",
+     "spans": [
+      {
+       "part": 1,
+       "page": "index.html",
+       "start": 82.49,
+       "end": 91.391
+      }
+     ],
+     "from": {
+      "part": 1,
+      "page": "index.html",
+      "t": 82.49
+     },
+     "to": {
+      "part": 1,
+      "page": "index.html",
+      "t": 91.391
+     }
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "section": "A",
+   "title": "Show now or wait",
+   "ov": [],
+   "steps": [
+    {
+     "cue": "Bot cannot see Sam. It has a guess μt and a ball of radius rt. Any of 100 ads could be best.",
+     "spans": [
+      {
+       "part": 1,
+       "page": "index.html",
+       "start": 91.391,
+       "end": 114.588
+      }
+     ],
+     "from": {
+      "part": 1,
+      "page": "index.html",
+      "t": 91.391
+     },
+     "to": {
+      "part": 1,
+      "page": "index.html",
+      "t": 114.588
+     }
+    },
+    {
+     "cue": "Show the yoga ad now? Click chance 5 in 100. Sam leaves.",
+     "spans": [
+      {
+       "part": 1,
+       "page": "index.html",
+       "start": 114.588,
+       "end": 136.367
+      }
+     ],
+     "from": {
+      "part": 1,
+      "page": "index.html",
+      "t": 114.588
+     },
+     "to": {
+      "part": 1,
+      "page": "index.html",
+      "t": 136.367
+     }
+    },
+    {
+     "cue": "Rewind. Keep talking. Ball shrinks by α = 0.6. Ads still in play: 100, then 50.",
+     "spans": [
+      {
+       "part": 1,
+       "page": "index.html",
+       "start": 136.367,
+       "end": 161.611
+      }
+     ],
+     "from": {
+      "part": 1,
+      "page": "index.html",
+      "t": 136.367
+     },
+     "to": {
+      "part": 1,
+      "page": "index.html",
+      "t": 161.611
+     }
+    },
+    {
+     "cue": "Then 30, then 10. Click chance 2 in 3.",
+     "spans": [
+      {
+       "part": 1,
+       "page": "index.html",
+       "start": 161.611,
+       "end": 171.459
+      }
+     ],
+     "from": {
+      "part": 1,
+      "page": "index.html",
+      "t": 161.611
+     },
+     "to": {
+      "part": 1,
+      "page": "index.html",
+      "t": 171.459
+     }
+    },
+    {
+     "cue": "Bot only answers. Sam leaves happy. Ten good ads never shown.",
+     "spans": [
+      {
+       "part": 1,
+       "page": "index.html",
+       "start": 171.459,
+       "end": 183.016
+      }
+     ],
+     "from": {
+      "part": 1,
+      "page": "index.html",
+      "t": 171.459
+     },
+     "to": {
+      "part": 1,
+      "page": "index.html",
+      "t": 183.016
+     }
+    },
+    {
+     "cue": "Sam may leave after any message, chance p = 0.2. Right moment: click, booking, paid.",
+     "spans": [
+      {
+       "part": 1,
+       "page": "index.html",
+       "start": 183.016,
+       "end": 201.872
+      }
+     ],
+     "from": {
+      "part": 1,
+      "page": "index.html",
+      "t": 183.016
+     },
+     "to": {
+      "part": 1,
+      "page": "index.html",
+      "t": 201.872
+     }
+    },
+    {
+     "cue": "Each message two buttons. Show now earns h(μt). Wait: Sam stays with 1 − p, ball shrinks.",
+     "spans": [
+      {
+       "part": 1,
+       "page": "index.html",
+       "start": 201.872,
+       "end": 223.897
+      }
+     ],
+     "from": {
+      "part": 1,
+      "page": "index.html",
+      "t": 201.872
+     },
+     "to": {
+      "part": 1,
+      "page": "index.html",
+      "t": 223.897
+     }
+    },
+    {
+     "cue": "Next guess stays in the ball and is fair on average. Its spread is unknown.",
+     "spans": [
+      {
+       "part": 1,
+       "page": "index.html",
+       "start": 223.897,
+       "end": 241.477
+      }
+     ],
+     "from": {
+      "part": 1,
+      "page": "index.html",
+      "t": 223.897
+     },
+     "to": {
+      "part": 1,
+      "page": "index.html",
+      "t": 241.477
+     }
+    },
+    {
+     "cue": "Best plan V = max(show now, wait). Wait needs the spread. Bot never has it.",
+     "spans": [
+      {
+       "part": 1,
+       "page": "index.html",
+       "start": 241.477,
+       "end": 257.216
+      }
+     ],
+     "from": {
+      "part": 1,
+      "page": "index.html",
+      "t": 241.477
+     },
+     "to": {
+      "part": 1,
+      "page": "index.html",
+      "t": 257.216
+     }
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "section": "B1",
+   "title": "Floor and ceiling",
+   "ov": [],
+   "steps": [
+    {
+     "cue": "So exact DP breaks. Fence the worth of waiting instead.",
+     "spans": [
+      {
+       "part": 4,
+       "page": "part4.html",
+       "start": 3,
+       "end": 14.352
+      }
+     ],
+     "from": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 3
+     },
+     "to": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 14.352
+     }
+    },
+    {
+     "cue": "Meter: h = show now, C = hidden worth of waiting. Want floor L and ceiling U.",
+     "spans": [
+      {
+       "part": 4,
+       "page": "part4.html",
+       "start": 14.352,
+       "end": 40.026
+      }
+     ],
+     "from": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 14.352
+     },
+     "to": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 40.026
+     }
+    },
+    {
+     "cue": "Map with four ads pushed by bids. Middle dot = no ad.",
+     "spans": [
+      {
+       "part": 4,
+       "page": "part4.html",
+       "start": 40.026,
+       "end": 62.117
+      }
+     ],
+     "from": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 40.026
+     },
+     "to": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 62.117
+     }
+    },
+    {
+     "cue": "Each ad is a flat sheet of fit. h = top sheet. A bowl of faces.",
+     "spans": [
+      {
+       "part": 4,
+       "page": "part4.html",
+       "start": 62.117,
+       "end": 92.785
+      }
+     ],
+     "from": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 62.117
+     },
+     "to": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 92.785
+     }
+    },
+    {
+     "cue": "Guess on the map. Bowl right above it = h.",
+     "spans": [
+      {
+       "part": 4,
+       "page": "part4.html",
+       "start": 92.785,
+       "end": 101.854
+      }
+     ],
+     "from": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 92.785
+     },
+     "to": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 101.854
+     }
+    },
+    {
+     "cue": "Fair guess plus bowl bends up: average height ≥ h, for any spread.",
+     "spans": [
+      {
+       "part": 4,
+       "page": "part4.html",
+       "start": 101.854,
+       "end": 144.063
+      }
+     ],
+     "from": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 101.854
+     },
+     "to": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 144.063
+     }
+    },
+    {
+     "cue": "Waiting risks Sam leaving. Floor L = (1 − p)h.",
+     "spans": [
+      {
+       "part": 4,
+       "page": "part4.html",
+       "start": 144.063,
+       "end": 162.941
+      }
+     ],
+     "from": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 144.063
+     },
+     "to": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 162.941
+     }
+    },
+    {
+     "cue": "D = longest gap between pushed ads. Bowl slope ≤ D. Cone covers the bowl.",
+     "spans": [
+      {
+       "part": 4,
+       "page": "part4.html",
+       "start": 162.941,
+       "end": 201.758
+      }
+     ],
+     "from": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 162.941
+     },
+     "to": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 201.758
+     }
+    },
+    {
+     "cue": "After s messages guess moved ≤ r(1 − α)^s. Cone gives max gain per ring.",
+     "spans": [
+      {
+       "part": 4,
+       "page": "part4.html",
+       "start": 232,
+       "end": 249.522
+      }
+     ],
+     "from": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 232
+     },
+     "to": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 249.522
+     }
+    },
+    {
+     "cue": "One bar per wait length. Shrink each by (1 − p)^s, Sam still there.",
+     "spans": [
+      {
+       "part": 4,
+       "page": "part4.html",
+       "start": 249.522,
+       "end": 266.919
+      }
+     ],
+     "from": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 249.522
+     },
+     "to": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 266.919
+     }
+    },
+    {
+     "cue": "Tallest bar = ceiling U. Its size in D r units is C.",
+     "spans": [
+      {
+       "part": 4,
+       "page": "part4.html",
+       "start": 266.919,
+       "end": 275.617
+      }
+     ],
+     "from": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 266.919
+     },
+     "to": {
+      "part": 4,
+      "page": "part4.html",
+      "t": 275.617
+     }
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "section": "B1",
+   "title": "Stop at the middle",
+   "ov": [],
+   "steps": [
+    {
+     "cue": "Truth hides in the fence. Meter again: h known, true worth hidden.",
+     "spans": [
+      {
+       "part": 3,
+       "page": "part3.html",
+       "start": 4,
+       "end": 41.707
+      }
+     ],
+     "from": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 4
+     },
+     "to": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 41.707
+     }
+    },
+    {
+     "cue": "Bot uses a bar. h below bar: talk. h reaches bar: show.",
+     "spans": [
+      {
+       "part": 3,
+       "page": "part3.html",
+       "start": 41.707,
+       "end": 61.456
+      }
+     ],
+     "from": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 41.707
+     },
+     "to": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 61.456
+     }
+    },
+    {
+     "cue": "Bar too low, 0.03: shows too early. Loss 0.07.",
+     "spans": [
+      {
+       "part": 3,
+       "page": "part3.html",
+       "start": 61.456,
+       "end": 74.849
+      }
+     ],
+     "from": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 61.456
+     },
+     "to": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 74.849
+     }
+    },
+    {
+     "cue": "Bar too high, 0.40: waits with h 0.30. Loss 0.13. Bar and truth agree: loss 0.",
+     "spans": [
+      {
+       "part": 3,
+       "page": "part3.html",
+       "start": 74.849,
+       "end": 100.772
+      }
+     ],
+     "from": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 74.849
+     },
+     "to": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 100.772
+     }
+    },
+    {
+     "cue": "Lemma 1: total gap = these message losses added up, weighted by Sam staying.",
+     "spans": [
+      {
+       "part": 3,
+       "page": "part3.html",
+       "start": 212,
+       "end": 225.75
+      }
+     ],
+     "from": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 212
+     },
+     "to": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 225.75
+     }
+    },
+    {
+     "cue": "Bar at the ceiling: worst loss is the whole fence, 0.50.",
+     "spans": [
+      {
+       "part": 3,
+       "page": "part3.html",
+       "start": 225.75,
+       "end": 246.8
+      }
+     ],
+     "from": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 225.75
+     },
+     "to": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 246.8
+     }
+    },
+    {
+     "cue": "Bar at the midpoint: wrong by at most half the fence. 0.50 drops to 0.25.",
+     "spans": [
+      {
+       "part": 3,
+       "page": "part3.html",
+       "start": 246.8,
+       "end": 287.848
+      }
+     ],
+     "from": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 246.8
+     },
+     "to": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 287.848
+     }
+    },
+    {
+     "cue": "Lemma 2: gap ≤ sum of half fences. Example 0.137 vs bound 0.320.",
+     "spans": [
+      {
+       "part": 3,
+       "page": "part3.html",
+       "start": 287.848,
+       "end": 313.892
+      }
+     ],
+     "from": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 287.848
+     },
+     "to": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 313.892
+     }
+    },
+    {
+     "cue": "Algorithm 1: h, floor, ceiling, bar at middle. Show when h reaches bar.",
+     "spans": [
+      {
+       "part": 3,
+       "page": "part3.html",
+       "start": 313.892,
+       "end": 329.887
+      }
+     ],
+     "from": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 313.892
+     },
+     "to": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 329.887
+     }
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "section": "B2",
+   "title": "Sam’s chat and Theorem 1",
+   "ov": [],
+   "steps": [
+    {
+     "cue": "Message 1: h 0.17, fence 0.14 to 0.65, bar 0.40. Talk.",
+     "spans": [
+      {
+       "part": 3,
+       "page": "part3.html",
+       "start": 329.887,
+       "end": 345.631
+      }
+     ],
+     "from": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 329.887
+     },
+     "to": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 345.631
+     }
+    },
+    {
+     "cue": "Message 2: h 0.33, fence 0.27 to 0.54, bar 0.40. Talk.",
+     "spans": [
+      {
+       "part": 3,
+       "page": "part3.html",
+       "start": 345.631,
+       "end": 358.412
+      }
+     ],
+     "from": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 345.631
+     },
+     "to": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 358.412
+     }
+    },
+    {
+     "cue": "Message 3: h 0.44, fence 0.35 to 0.51, bar 0.43. Show the beach cottage.",
+     "spans": [
+      {
+       "part": 3,
+       "page": "part3.html",
+       "start": 358.412,
+       "end": 372.056
+      }
+     ],
+     "from": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 358.412
+     },
+     "to": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 372.056
+     }
+    },
+    {
+     "cue": "Ceiling = spread × ball. Big ball or far apart ads: wait longer.",
+     "spans": [
+      {
+       "part": 3,
+       "page": "part3.html",
+       "start": 372.056,
+       "end": 388.662
+      }
+     ],
+     "from": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 372.056
+     },
+     "to": {
+      "part": 3,
+      "page": "part3.html",
+      "t": 388.662
+     }
+    },
+    {
+     "cue": "Each message risks half a fence ≤ ½ D C r. Next ball α smaller, Sam stays 1 − p.",
+     "spans": [
+      {
+       "part": 5,
+       "page": "part5.html",
+       "start": 123,
+       "end": 139.086
+      }
+     ],
+     "from": {
+      "part": 5,
+      "page": "part5.html",
+      "t": 123
+     },
+     "to": {
+      "part": 5,
+      "page": "part5.html",
+      "t": 139.086
+     }
+    },
+    {
+     "cue": "A tower of slabs, each (1 − p)α of the last. Has a limit.",
+     "spans": [
+      {
+       "part": 5,
+       "page": "part5.html",
+       "start": 139.086,
+       "end": 153.941
+      }
+     ],
+     "from": {
+      "part": 5,
+      "page": "part5.html",
+      "t": 139.086
+     },
+     "to": {
+      "part": 5,
+      "page": "part5.html",
+      "t": 153.941
+     }
+    },
+    {
+     "cue": "Theorem 1: loss ≤ D C r / 2(1 − (1 − p)α).",
+     "spans": [
+      {
+       "part": 5,
+       "page": "part5.html",
+       "start": 153.941,
+       "end": 162.482
+      }
+     ],
+     "from": {
+      "part": 5,
+      "page": "part5.html",
+      "t": 153.941
+     },
+     "to": {
+      "part": 5,
+      "page": "part5.html",
+      "t": 162.482
+     }
+    },
+    {
+     "cue": "Sam: about 0.39 D r, however the chat goes.",
+     "spans": [
+      {
+       "part": 5,
+       "page": "part5.html",
+       "start": 162.482,
+       "end": 169.991
+      }
+     ],
+     "from": {
+      "part": 5,
+      "page": "part5.html",
+      "t": 162.482
+     },
+     "to": {
+      "part": 5,
+      "page": "part5.html",
+      "t": 169.991
+     }
+    },
+    {
+     "cue": "Shrinks with r. Grows with D. Impatient Sam, p = 0.5: 0.14 D r.",
+     "spans": [
+      {
+       "part": 5,
+       "page": "part5.html",
+       "start": 169.991,
+       "end": 195.848
+      }
+     ],
+     "from": {
+      "part": 5,
+      "page": "part5.html",
+      "t": 169.991
+     },
+     "to": {
+      "part": 5,
+      "page": "part5.html",
+      "t": 195.848
+     }
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "section": "B2",
+   "title": "No rule does much better",
+   "ov": [],
+   "steps": [
+    {
+     "cue": "Can any rule beat it? Two worlds look the same today. World A: next message settles it.",
+     "spans": [
+      {
+       "part": 5,
+       "page": "part5.html",
+       "start": 236,
+       "end": 262.243
+      }
+     ],
+     "from": {
+      "part": 5,
+      "page": "part5.html",
+      "t": 236
+     },
+     "to": {
+      "part": 5,
+      "page": "part5.html",
+      "t": 262.243
+     }
+    },
+    {
+     "cue": "World A: wait and get 2S. World B: show now, waiting costs pS.",
+     "spans": [
+      {
+       "part": 5,
+       "page": "part5.html",
+       "start": 262.243,
+       "end": 278.978
+      }
+     ],
+     "from": {
+      "part": 5,
+      "page": "part5.html",
+      "t": 262.243
+     },
+     "to": {
+      "part": 5,
+      "page": "part5.html",
+      "t": 278.978
+     }
+    },
+    {
+     "cue": "Bot cannot tell them apart. Shows now with chance x. Lines cross at x = p/(1 + p).",
+     "spans": [
+      {
+       "part": 5,
+       "page": "part5.html",
+       "start": 278.978,
+       "end": 300.076
+      }
+     ],
+     "from": {
+      "part": 5,
+      "page": "part5.html",
+      "t": 278.978
+     },
+     "to": {
+      "part": 5,
+      "page": "part5.html",
+      "t": 300.076
+     }
+    },
+    {
+     "cue": "Prop 1: no rule beats 0.013 D r. Midpoint gets 0.39 D r. Same shape, C D r.",
+     "spans": [
+      {
+       "part": 5,
+       "page": "part5.html",
+       "start": 300.076,
+       "end": 327.237
+      }
+     ],
+     "from": {
+      "part": 5,
+      "page": "part5.html",
+      "t": 300.076
+     },
+     "to": {
+      "part": 5,
+      "page": "part5.html",
+      "t": 327.237
+     }
+    },
+    {
+     "cue": "Even spread gives a second ceiling G. Any 0.71, even 0.40. Take the lower: Cunif.",
+     "spans": [
+      {
+       "part": 6,
+       "page": "part6.html",
+       "start": 238,
+       "end": 265.807
+      }
+     ],
+     "from": {
+      "part": 6,
+      "page": "part6.html",
+      "t": 238
+     },
+     "to": {
+      "part": 6,
+      "page": "part6.html",
+      "t": 265.807
+     }
+    },
+    {
+     "cue": "Figure 1, ratio Cunif/C: 0.29 to 0.91. Our case 0.56, guarantee about halves.",
+     "spans": [
+      {
+       "part": 6,
+       "page": "part6.html",
+       "start": 265.807,
+       "end": 312.781
+      }
+     ],
+     "from": {
+      "part": 6,
+      "page": "part6.html",
+      "t": 265.807
+     },
+     "to": {
+      "part": 6,
+      "page": "part6.html",
+      "t": 312.781
+     }
+    },
+    {
+     "cue": "Random markets, radius 0.4: loses 16 percent, keeps 84. Far under the guarantee line.",
+     "spans": [
+      {
+       "part": 6,
+       "page": "part6.html",
+       "start": 419,
+       "end": 461.552
+      }
+     ],
+     "from": {
+      "part": 6,
+      "page": "part6.html",
+      "t": 419
+     },
+     "to": {
+      "part": 6,
+      "page": "part6.html",
+      "t": 461.552
+     }
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "section": "C",
+   "title": "Honest bids",
+   "ov": [
+    "Same payment rule as in Myerson’s auction"
+   ],
+   "steps": [
+    {
+     "cue": "Four advertisers, private value v. Bid once before the chat. Winner pays.",
+     "spans": [
+      {
+       "part": 7,
+       "page": "part7.html",
+       "start": 9.5,
+       "end": 33.53
+      }
+     ],
+     "from": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 9.5
+     },
+     "to": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 33.53
+     }
+    },
+    {
+     "cue": "X(b) = average fit at bid b. Bigger bid, shown earlier. Only rises.",
+     "spans": [
+      {
+       "part": 7,
+       "page": "part7.html",
+       "start": 33.53,
+       "end": 59.383
+      }
+     ],
+     "from": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 33.53
+     },
+     "to": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 59.383
+     }
+    },
+    {
+     "cue": "Pay = rectangle b·X(b) minus area under X.",
+     "spans": [
+      {
+       "part": 7,
+       "page": "part7.html",
+       "start": 59.383,
+       "end": 77.891
+      }
+     ],
+     "from": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 59.383
+     },
+     "to": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 77.891
+     }
+    },
+    {
+     "cue": "Bid low or high: lose a sliver. Utility peaks at the true value, 0.5.",
+     "spans": [
+      {
+       "part": 7,
+       "page": "part7.html",
+       "start": 77.891,
+       "end": 112.063
+      }
+     ],
+     "from": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 77.891
+     },
+     "to": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 112.063
+     }
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "section": "C",
+   "title": "Virtual value",
+   "ov": [
+    "Myerson’s recipe: charge by virtual value, drop negatives"
+   ],
+   "steps": [
+    {
+     "cue": "Virtual value φ(v) = v − (1 − F)/f. Even values: 2v − 1.",
+     "spans": [
+      {
+       "part": 7,
+       "page": "part7.html",
+       "start": 112.063,
+       "end": 151.009
+      }
+     ],
+     "from": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 112.063
+     },
+     "to": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 151.009
+     }
+    },
+    {
+     "cue": "Zero at 0.5. Rafting, value 0.35, scores −0.3. Dropped.",
+     "spans": [
+      {
+       "part": 7,
+       "page": "part7.html",
+       "start": 151.009,
+       "end": 163.661
+      }
+     ],
+     "from": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 151.009
+     },
+     "to": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 163.661
+     }
+    },
+    {
+     "cue": "Lemma 4: average pay = average φ·X, 0.0776 both. Cut negatives: 0.087 to 0.108.",
+     "spans": [
+      {
+       "part": 7,
+       "page": "part7.html",
+       "start": 163.661,
+       "end": 183.409
+      }
+     ],
+     "from": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 163.661
+     },
+     "to": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 183.409
+     }
+    },
+    {
+     "cue": "Algorithm 2: drop φ < 0, push ads by φ, run the same chat rule.",
+     "spans": [
+      {
+       "part": 7,
+       "page": "part7.html",
+       "start": 183.409,
+       "end": 194.829
+      }
+     ],
+     "from": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 183.409
+     },
+     "to": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 194.829
+     }
+    },
+    {
+     "cue": "Market pulls in. Widest gap 1.20 to 0.87. Less to lose.",
+     "spans": [
+      {
+       "part": 7,
+       "page": "part7.html",
+       "start": 194.829,
+       "end": 217.47
+      }
+     ],
+     "from": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 194.829
+     },
+     "to": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 217.47
+     }
+    },
+    {
+     "cue": "Revenue = Σ φ·X. Cottage X flat until v passes 0.5.",
+     "spans": [
+      {
+       "part": 7,
+       "page": "part7.html",
+       "start": 217.47,
+       "end": 229.872
+      }
+     ],
+     "from": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 217.47
+     },
+     "to": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 229.872
+     }
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "section": "C",
+   "title": "Price from one chat",
+   "ov": [],
+   "steps": [
+    {
+     "cue": "Price needs all of X. Platform sees one chat. Replay it, Sam leaves after message 6.",
+     "spans": [
+      {
+       "part": 7,
+       "page": "part7.html",
+       "start": 229.872,
+       "end": 248.509
+      }
+     ],
+     "from": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 229.872
+     },
+     "to": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 248.509
+     }
+    },
+    {
+     "cue": "Push 0.9: shown at message 2, fit 0.56. Lower push, later stop. Message 7: nothing.",
+     "spans": [
+      {
+       "part": 7,
+       "page": "part7.html",
+       "start": 248.509,
+       "end": 267.517
+      }
+     ],
+     "from": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 248.509
+     },
+     "to": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 267.517
+     }
+    },
+    {
+     "cue": "Staircase, 5 steps. Price = 0.9 × 0.56 − 0.15 = 0.35.",
+     "spans": [
+      {
+       "part": 7,
+       "page": "part7.html",
+       "start": 267.517,
+       "end": 284.543
+      }
+     ],
+     "from": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 267.517
+     },
+     "to": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 284.543
+     }
+    },
+    {
+     "cue": "Theorem 2: revenue loss ≤ virtual spread × C × r1 / 2(1 − (1 − p)α).",
+     "spans": [
+      {
+       "part": 7,
+       "page": "part7.html",
+       "start": 389.5,
+       "end": 401.423
+      }
+     ],
+     "from": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 389.5
+     },
+     "to": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 401.423
+     }
+    },
+    {
+     "cue": "300 random markets: worst loss 0.11, bound 0.15 on average.",
+     "spans": [
+      {
+       "part": 7,
+       "page": "part7.html",
+       "start": 401.423,
+       "end": 409.009
+      }
+     ],
+     "from": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 401.423
+     },
+     "to": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 409.009
+     }
+    },
+    {
+     "cue": "Bid, push by φ, talk while unsure, charge the area. Computable, honest, near best revenue.",
+     "spans": [
+      {
+       "part": 7,
+       "page": "part7.html",
+       "start": 457,
+       "end": 476.823
+      }
+     ],
+     "from": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 457
+     },
+     "to": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 476.823
+     }
+    },
+    {
+     "cue": "Next: budgets, real chats, ads that change Sam, length limits.",
+     "spans": [
+      {
+       "part": 7,
+       "page": "part7.html",
+       "start": 476.823,
+       "end": 496.469
+      }
+     ],
+     "from": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 476.823
+     },
+     "to": {
+      "part": 7,
+      "page": "part7.html",
+      "t": 496.469
+     }
+    }
+   ]
+  }
+ ],
+ "notes": []
+}

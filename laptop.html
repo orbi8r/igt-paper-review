@@ -1,0 +1,139 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Dynamic Learning and Optimal Advertising Mechanism for LLM Platforms</title>
+<style>
+html,body{margin:0;height:100%;background:#000;overflow:hidden;cursor:none}
+#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;background:#000;overflow:hidden}
+#stage iframe{position:absolute;left:0;top:0;width:1920px;height:1080px;border:0;background:#000;visibility:hidden}
+#ov{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none;font-family:'Noto Sans',system-ui,sans-serif;font-weight:700;color:#fff}
+.card{position:absolute;left:0;top:0;width:1920px;height:1080px;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transition:opacity .5s;padding:0 160px;box-sizing:border-box}
+.card small{font-size:48px;color:#bdbdbd;margin-bottom:28px}
+.card b{font-size:104px;line-height:1.1}
+.card .cover{font-size:92px;line-height:1.12}.card .tm{font-size:64px;color:#FFE600;margin-top:56px}.card .pr{font-size:56px;margin-top:20px}
+.card i{font-style:normal;font-size:44px;color:#FFE600;margin-top:36px}
+#lines{position:absolute;left:0;bottom:14px;width:1920px;display:flex;flex-direction:column;align-items:center;gap:6px;text-shadow:0 0 8px #000,0 0 8px #000}
+#lines .a{font-size:56px}
+#lines .b{font-size:40px;color:#bdbdbd}
+#hint{position:fixed;left:12px;bottom:8px;font:14px sans-serif;color:#555;transition:opacity 1s}
+</style></head><body>
+<div id="stage"><div id="ov"></div></div>
+<div id="hint">Right or Space: next. Left: previous. R: replay step. F: fullscreen.</div>
+<script>
+const stage = document.getElementById('stage'), ov = document.getElementById('ov');
+let B = [], c = 0, playing = false, shown = { part: null, t: 0 }, last = -1;
+// Playback rate of the scenes: 2x by default, override with ?speed=1 in the laptop URL. The only place the rate lives.
+const SPEED = Math.max(0.1, +new URLSearchParams(location.search).get('speed') || 2);
+let tStart = 0, wStart = 0, SL = [], atStart = -1, sp = 0, gen = 0, switching = false;
+const frames = {}; // part -> {el, ready}
+
+let CFG = { paper: '', team: '', presenter: '' }; // paper title, team, presenter: edit deck_config.json only
+async function loadBeats() {
+  CFG = await (await fetch('/deck.json', { cache: 'no-store' })).json();
+  const j = await (await fetch('/slides.json', { cache: 'no-store' })).json();
+  SL = j.slides; B = [];
+  SL.forEach(s => s.steps.forEach((st, k) => B.push({ ...st, part: st.from.part, page: st.from.page, start: st.from.t, end: st.to.t, slide: s.n, k, ns: s.steps.length, sec: s.section, title: s.title, ov: s.ov })));
+}
+const fit = () => { const s = Math.min(innerWidth / 1920, innerHeight / 1080); stage.style.transform = `translate(${(innerWidth - 1920 * s) / 2}px,${(innerHeight - 1080 * s) / 2}px) scale(${s})`; };
+addEventListener('resize', fit); fit();
+
+function load(part, page) {
+  if (frames[part]) return frames[part].ready;
+  const el = document.createElement('iframe'); el.scrolling = 'no'; stage.insertBefore(el, ov);
+  const ready = new Promise(async r => {
+    await new Promise(x => { el.onload = x; el.src = '/web/' + page; });
+    while (!(el.contentWindow && el.contentWindow.ready)) await new Promise(x => setTimeout(x, 50));
+    r(el);
+  });
+  frames[part] = { el, ready, page };
+  return ready;
+}
+async function ensure(b, j = 0) {
+  const S = b.spans[j], el = await load(S.part, S.page);
+  for (const p in frames) frames[p].el.style.visibility = (+p === S.part) ? 'visible' : 'hidden';
+  shown = { part: S.part, t: 0 };
+  // keep this step's parts and the next step's first part, drop the rest
+  const nb = B[B.indexOf(b) + 1], keep = new Set([...b.spans.map(x => x.part), nb && nb.part]);
+  for (const p in frames) if (!keep.has(+p)) { frames[p].el.remove(); delete frames[p]; }
+  if (nb && !frames[nb.part]) load(nb.part, nb.page);
+  return el;
+}
+const seek = t => { shown.t = t; card(); const f = frames[shown.part]; if (f && f.el.contentWindow && f.el.contentWindow.seek) f.el.contentWindow.seek(t); };
+// rem/tot: wall seconds left and total for the step that is playing (or just ended: rem 0, or waiting at its start: rem = tot). The phone counts down locally between posts.
+function timing() {
+  const b = B[playing ? c : atStart >= 0 ? c : last]; if (!b) return {};
+  const full = b.spans.reduce((a, x) => a + x.end - x.start, 0) / SPEED;
+  const rem = playing ? (b.spans[sp].end - (tStart + SPEED * (performance.now() - wStart) / 1000) + b.spans.slice(sp + 1).reduce((a, x) => a + x.end - x.start, 0)) / SPEED : atStart >= 0 ? full : 0;
+  return { rem: Math.max(0, rem), tot: full };
+}
+const post = () => fetch('/state', { method: 'POST', body: JSON.stringify({ c, N: B.length, playing, part: shown.part, t: shown.t, last, atStart, speed: SPEED, ...timing() }) }).catch(() => {});
+
+const SEC = { A: 'Sam and the one slot', B1: 'The waiting rule', B2: 'How good it is', C: 'Selling the slot' };
+function overlay(i) { // the cover on step 0 only, fixed lines on slides that carry a note
+  const b = B[i]; if (!b) return;
+  const lines = b.ov.map((x, j) => `<div class="${j === 0 && b.ov.length === 1 ? 'b' : j === 0 ? 'a' : 'b'}">${x}</div>`).join('');
+  const cardHtml = i === 0 ? `<div class="card" id="card"><b class="cover">${CFG.paper}</b><div class="tm">${CFG.team}</div><div class="pr">${CFG.presenter}</div></div>` : '';
+  ov.innerHTML = `<div id="lines">${lines}</div>` + cardHtml;
+  card();
+}
+function card() { const e = document.getElementById('card'), b = B[Math.min(c, B.length - 1)]; if (e) e.style.opacity = (!playing && b && shown.t <= b.start + 0.01) ? 1 : 0; }
+function startSpan(b, j) { const S = b.spans[j]; sp = j; tStart = S.start; wStart = performance.now(); seek(S.start); }
+async function playBeat(i) {
+  if (i < 0 || i >= B.length) return;
+  const b = B[i], my = ++gen;
+  c = i; last = i; playing = false; atStart = -1;
+  await ensure(b); if (my !== gen) return;
+  overlay(i); startSpan(b, 0); playing = true; post();
+}
+async function toStart(i) {
+  i = Math.max(0, Math.min(B.length - 1, i));
+  const b = B[i], my = ++gen;
+  playing = false; c = i; atStart = i; last = i - 1;
+  await ensure(b); if (my !== gen) return;
+  overlay(i); seek(b.start); post();
+}
+async function finish() { // jump to the end of the current step
+  const i = c, b = B[i], my = ++gen, j = b.spans.length - 1;
+  atStart = -1; playing = false;
+  if (shown.part !== b.spans[j].part) await ensure(b, j);
+  if (my !== gen) return;
+  seek(b.end); last = i; c = Math.min(B.length, i + 1); post();
+}
+async function advance() { // next span of the same step (a jump to another part or time)
+  const b = B[c], my = gen; switching = true;
+  const j = sp + 1; await ensure(b, j);
+  if (my === gen && playing) startSpan(b, j);
+  switching = false;
+}
+async function cmd(k) {
+  if (!B.length) return;
+  if (k === 'next') { if (playing) await finish(); else if (c < B.length) await playBeat(c); }
+  else if (k === 'prev') await toStart(c - 1);
+  else if (k === 'restart') await playBeat(last >= 0 ? last : c);
+}
+function loop() {
+  if (playing) {
+    const b = B[c], S = b.spans[sp], t = tStart + SPEED * (performance.now() - wStart) / 1000;
+    if (switching) { /* waiting for the next part */ }
+    else if (t >= S.end) { if (sp + 1 < b.spans.length) advance(); else finish(); } else seek(t);
+  }
+  requestAnimationFrame(loop);
+}
+setInterval(() => { if (playing) post(); }, 2000);
+
+addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); cmd('next'); }
+  else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); cmd('prev'); }
+  else if (e.key === 'r' || e.key === 'R') cmd('restart');
+  else if (e.key === 'f' || e.key === 'F') { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+});
+setTimeout(() => document.getElementById('hint').style.opacity = 0, 8000);
+
+(async () => {
+  await loadBeats();
+  const es = new EventSource('/events?role=laptop');
+  es.onmessage = m => { const d = JSON.parse(m.data); if (d.type === 'cmd') cmd(d.cmd); else if (d.type === 'beats') loadBeats(); };
+  const q = new URLSearchParams(location.search);
+  await toStart(+q.get('step') || 0);
+  window.__ctl = { cmd, get state() { return { c, playing, part: shown.part, t: shown.t, N: B.length, last, atStart, slide: (B[Math.min(c, B.length - 1)] || {}).slide }; },
+    async show(i, where) { await toStart(i); if (where === 'end') { const b = B[i], j = b.spans.length - 1; await ensure(b, j); seek(b.end); } else if (where > 0) seek(B[i].start + where); }, steps: () => B };
+  loop();
+})();
+</script></body></html>

@@ -1,0 +1,117 @@
+<!doctype html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Remote</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:#000;color:#fff;font-family:'Noto Sans',system-ui,sans-serif;overflow:hidden;touch-action:manipulation}
+#app{height:100dvh;display:flex;flex-direction:column;padding:10px 16px 14px;gap:6px}
+#hd{font-size:12px;line-height:1.25;color:#fff;margin-bottom:2px}#hd b{color:#FFE600}
+#top{display:flex;justify-content:space-between;font-size:14px;color:#bdbdbd;height:20px;align-items:center}
+#top b{color:#FFE600}
+.lab{font-size:12px;letter-spacing:.08em;color:#8a8a8a;text-transform:uppercase}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sl{position:relative;width:100%;aspect-ratio:16/9;border:2px solid #444;border-radius:6px;overflow:hidden;background:#000}
+.sl.now{border-color:#FFE600}
+.sl iframe{position:absolute;left:0;top:0;width:1920px;height:1080px;border:0;transform-origin:0 0;pointer-events:none}
+#cue{font-size:30px;line-height:1.25;font-weight:700;flex:1;overflow:hidden;margin-top:4px}
+#nx{font-size:16px;line-height:1.25;color:#9a9a9a;height:60px;overflow:hidden}
+#btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+button{border:0;border-radius:16px;font:700 20px 'Noto Sans',system-ui,sans-serif;color:#fff;background:#2a2a2a;height:62px}
+button:active{filter:brightness(1.4)}
+#next{grid-column:1/3;height:96px;font-size:34px;background:#FFE600;color:#000}
+#ttl{font-size:19px;font-weight:700;color:#FFE600;line-height:1.15}
+#clk{display:flex;align-items:center;gap:12px;height:54px}
+#clk #sec{font-size:46px;font-weight:800;line-height:1;min-width:150px;font-variant-numeric:tabular-nums;color:#FFE600}
+#clk.done #sec{color:#5dff8a}#clk.idle #sec{color:#8a8a8a}
+#bar{flex:1;height:10px;border-radius:5px;background:#333;overflow:hidden}#fill{height:100%;width:0;background:#FFE600}#clk.done #fill{background:#5dff8a}
+#warn{color:#ff6b6b;font-size:13px;height:16px}
+</style></head><body><div id="app">
+<div id="hd"></div>
+<div id="top"><span id="pos">loading</span><span id="stat"></span></div>
+<div id="clk" class="idle"><span id="sec">--</span><div id="bar"><div id="fill"></div></div></div>
+<div id="ttl"></div>
+<div class="pair"><div><div class="lab">Now</div><div class="sl now"><iframe id="fa" scrolling="no"></iframe></div></div>
+<div><div class="lab">After next</div><div class="sl"><iframe id="fb" scrolling="no"></iframe></div></div></div>
+<div id="cue"></div>
+<div id="nx"></div>
+<div id="warn"></div>
+<div id="btns"><button id="next">NEXT</button><button id="prev">PREVIOUS</button><button id="restart">REPLAY</button></div>
+</div>
+<script>
+let B = [], st = null, recvAt = 0, laptop = false;
+
+class Mini {
+  constructor(el) { this.el = el; this.part = null; this.want = null; this.busy = false; }
+  set(part, t) { this.want = { part, t }; this.kick(); }
+  async kick() {
+    if (this.busy) return; this.busy = true;
+    try {
+      for (let w; w !== this.want;) {
+        w = this.want;
+        if (this.part !== w.part) {
+          this.part = w.part;
+          const b = B.flatMap(x => x.spans).find(x => x.part === w.part);
+          await new Promise(r => { this.el.onload = r; this.el.src = '/web/' + b.page; });
+          while (!(this.el.contentWindow && this.el.contentWindow.ready)) await new Promise(r => setTimeout(r, 80));
+        }
+        const cw = this.el.contentWindow; if (cw && cw.seek) cw.seek(w.t);
+      }
+    } finally { this.busy = false; }
+  }
+}
+const now = new Mini(document.getElementById('fa')), nxt = new Mini(document.getElementById('fb'));
+function scaleFrames() { document.querySelectorAll('.sl').forEach(s => s.firstElementChild.style.transform = `scale(${s.clientWidth / 1920})`); }
+addEventListener('resize', scaleFrames);
+
+const $ = id => document.getElementById(id);
+function curT() { return st.playing ? st.t + (st.speed || 1) * (performance.now() - recvAt) / 1000 : st.t; }
+
+function clock() { // wall seconds left, counted down locally from the last post (rem, tot) while playing
+  const k = $('clk'); if (!st || st.tot == null) { k.className = 'idle'; $('sec').textContent = '--'; $('fill').style.width = '0'; return; }
+  const rem = st.playing ? Math.max(0, st.rem - (performance.now() - recvAt) / 1000) : st.rem, f = st.tot ? 1 - rem / st.tot : 1;
+  const idle = !st.playing && st.atStart >= 0, done = !st.playing && !idle;
+  k.className = done ? 'done' : idle ? 'idle' : '';
+  $('sec').textContent = done ? 'done \u2713' : rem.toFixed(1) + ' s';
+  $('fill').style.width = (idle ? 0 : Math.min(1, f) * 100) + '%';
+}
+function render() {
+  if (!st || !B.length) return;
+  const n = B.length, intro = !st.playing && st.c === 0 && st.atStart === 0;
+  const ci = st.playing ? st.c : st.last, cb = ci >= 0 && ci < n ? B[ci] : null;
+  const ni = st.playing ? st.c + 1 : st.c, nb = ni < n ? B[ni] : null, tb = intro ? B[st.c] : (cb || B[0]);
+  $('pos').innerHTML = intro ? 'Cover' : cb ? `Step <b>${ci + 1}</b> / ${n}` : 'Ready';
+  $('ttl').textContent = tb.title;
+  $('stat').textContent = st.c >= n && !st.playing ? 'THE END' : st.playing ? 'PLAYING' : 'READY';
+  $('cue').textContent = intro ? 'Cover. Press NEXT to start.' : cb ? cb.cue : 'Press NEXT to begin.';
+  $('nx').textContent = nb ? `Next: ${nb.cue}` : 'That is the end.';
+  if (nb) nxt.set(nb.to.part, nb.to.t);
+  $('warn').textContent = laptop ? '' : 'Laptop page not connected';
+}
+function tick() {
+  if (st && B.length && st.part) now.set(st.part, st.playing ? Math.min(curT(), 1e9) : st.t);
+}
+setInterval(() => { if (st && st.playing) tick(); clock(); }, 100);
+
+async function loadBeats() {
+  const cfg = await (await fetch('/deck.json', { cache: 'no-store' })).json(); // deck_config.json
+  $('hd').innerHTML = `${cfg.paper}<br><b>${cfg.team}</b>, ${cfg.presenter}`;
+  const j = await (await fetch('/slides.json', { cache: 'no-store' })).json();
+  B = []; j.slides.forEach(s => s.steps.forEach((st, k) => B.push({ ...st, slide: s.n, k, ns: s.steps.length, title: s.title })));
+}
+function cmd(k) { navigator.vibrate && navigator.vibrate(15); fetch('/cmd', { method: 'POST', body: JSON.stringify({ cmd: k }) }).then(r => r.text()).then(t => { if (t === 'no laptop') { laptop = false; render(); } }); }
+['next', 'prev', 'restart'].forEach(k => $(k).addEventListener('click', () => cmd(k)));
+
+(async () => {
+  await loadBeats(); scaleFrames();
+  const es = new EventSource('/events?role=phone');
+  es.onmessage = m => {
+    const d = JSON.parse(m.data);
+    if (d.type === 'hello') { laptop = d.laptop; if (d.state) { st = d.state; recvAt = performance.now(); } }
+    else if (d.type === 'laptop') laptop = d.laptop;
+    else if (d.type === 'state') { st = d.state; recvAt = performance.now(); }
+    else if (d.type === 'beats') loadBeats();
+    render(); tick(); clock();
+  };
+  try { navigator.wakeLock && navigator.wakeLock.request('screen'); } catch (e) {}
+})();
+</script></body></html>

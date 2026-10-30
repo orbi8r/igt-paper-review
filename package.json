@@ -1,0 +1,8 @@
+{
+  "name": "igt-paper-review",
+  "version": "1.0.0",
+  "description": "Presenter deck for the stopping time ad paper, with a phone remote",
+  "scripts": { "start": "node server.js" },
+  "license": "ISC",
+  "dependencies": { "qrcode-terminal": "^0.12.0" }
+}
