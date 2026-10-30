@@ -31,6 +31,7 @@ Repeat for 10.0.0.0/8 and 172.16.0.0/12 if needed. `PORT=9000 ./run.sh` uses ano
 - `laptop.html`, `phone.html`: the two screens
 - `slides.json`: 9 slides, 66 steps, each step is a span of a scene plus its cue text
 - `deck_config.json`: cover text
+- `IGT_slides.pdf`: the same story as a 22 page slide deck with stills from the animations
 - `web/`: the scene pages and data, with three.js included so it runs offline
 
 The paper is not included.
